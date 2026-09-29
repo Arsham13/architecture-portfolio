@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Estedad, Tahoma, sans-serif">
+  <rect width="1200" height="800" fill="#F3F1EC"/>
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7a7468" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <!-- outer frame -->
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#1f1d18" stroke-width="1"/>
+  <!-- title block -->
+  <text x="60" y="74" font-size="14" fill="#1f1d18" font-weight="700" letter-spacing="2">بازطراحی آپارتمان — پیش و پس</text>
+  <text x="60" y="94" font-size="11" fill="#7a7468" letter-spacing="1">مقایسه چیدمان / نمایشی</text>
+  <!-- divider -->
+  <line x1="600" y1="120" x2="600" y2="680" stroke="#7a7468" stroke-width="0.75" stroke-dasharray="6 6"/>
+  <text x="300" y="150" font-size="13" fill="#1f1d18" text-anchor="middle" font-weight="700">پیش از بازطراحی</text>
+  <text x="900" y="150" font-size="13" fill="#1f1d18" text-anchor="middle" font-weight="700">پس از بازطراحی</text>
+  <!-- before: many small rooms -->
+  <g stroke="#7a7468" stroke-width="1" fill="none">
+    <rect x="120" y="200" width="400" height="480"/>
+    <line x1="340" y1="200" x2="340" y2="680"/>
+    <line x1="120" y1="440" x2="340" y2="440"/>
+    <line x1="340" y1="280" x2="480" y2="280"/>
+    <line x1="340" y1="420" x2="480" y2="420"/>
+  </g>
+  <!-- after: open plan -->
+  <g stroke="#1f1d18" stroke-width="1.5" fill="none">
+    <rect x="680" y="200" width="400" height="480"/>
+    <line x1="680" y1="440" x2="1080" y2="440" stroke-dasharray="4 4"/>
+  </g>
+  <text x="300" y="440" font-size="10" fill="#7a7468" text-anchor="middle">۴ اتاق مجزا</text>
+  <text x="900" y="440" font-size="10" fill="#1f1d18" text-anchor="middle">فضای باز پیوسته</text>
+  </svg>

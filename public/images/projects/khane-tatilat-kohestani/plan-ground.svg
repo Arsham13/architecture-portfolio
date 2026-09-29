@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Estedad, Tahoma, sans-serif">
+  <rect width="1200" height="800" fill="#F3F1EC"/>
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7a7468" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <!-- outer frame -->
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#1f1d18" stroke-width="1"/>
+  <!-- title block -->
+  <text x="60" y="74" font-size="14" fill="#1f1d18" font-weight="700" letter-spacing="2">خانه کوهستانی — پلان همکف</text>
+  <text x="60" y="94" font-size="11" fill="#7a7468" letter-spacing="1">سه بلوک با زاویه / مقیاس نمایشی</text>
+  <!-- topography indication -->
+  <g stroke="#7a7468" stroke-width="0.5" fill="none">
+    <path d="M 80 200 Q 600 160 1120 200"/>
+    <path d="M 80 260 Q 600 220 1120 260"/>
+    <path d="M 80 320 Q 600 280 1120 320"/>
+  </g>
+  <!-- three offset volumes -->
+  <g stroke="#1f1d18" stroke-width="1.5" fill="none">
+    <rect x="160" y="380" width="240" height="140" transform="rotate(-8 280 450)"/>
+    <rect x="490" y="380" width="220" height="140"/>
+    <rect x="820" y="380" width="240" height="140" transform="rotate(8 940 450)"/>
+  </g>
+  <text x="180" y="440" font-size="11" fill="#1f1d18">بلوک ۱</text>
+  <text x="570" y="440" font-size="11" fill="#1f1d18">بلوک ۲</text>
+  <text x="880" y="440" font-size="11" fill="#1f1d18">بلوک ۳</text>
+  <!-- connector -->
+  <line x1="400" y1="450" x2="490" y2="450" stroke="#1f1d18" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="710" y1="450" x2="820" y2="450" stroke="#1f1d18" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="600" y="600" font-size="10" fill="#7a7468" text-anchor="middle">چشم‌انداز دره</text>
+  
+  <g stroke="#7a7468" stroke-width="0.75" fill="none">
+    <line x1="160" y1="660" x2="1040" y2="660"/>
+    <line x1="160" y1="656" x2="160" y2="664"/>
+    <line x1="1040" y1="656" x2="1040" y2="664"/>
+  </g>
+  <text x="600" y="654" font-size="10" fill="#7a7468" text-anchor="middle" letter-spacing="1">طول کل</text>
+  </svg>

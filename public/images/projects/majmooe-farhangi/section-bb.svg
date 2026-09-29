@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" font-family="Estedad, Tahoma, sans-serif">
+  <rect width="1200" height="800" fill="#F3F1EC"/>
+  <defs>
+    <pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#7a7468" stroke-width="0.5" opacity="0.35"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <!-- outer frame -->
+  <rect x="40" y="40" width="1120" height="720" fill="none" stroke="#1f1d18" stroke-width="1"/>
+  <!-- title block -->
+  <text x="60" y="74" font-size="14" fill="#1f1d18" font-weight="700" letter-spacing="2">مجموعه فرهنگی — برش B-B</text>
+  <text x="60" y="94" font-size="11" fill="#7a7468" letter-spacing="1">برش طولی / نمایشی</text>
+  <line x1="100" y1="520" x2="1100" y2="520" stroke="#1f1d18" stroke-width="1.5"/>
+  <g stroke="#1f1d18" stroke-width="1.5" fill="none">
+    <rect x="140" y="380" width="240" height="140"/>
+    <rect x="820" y="380" width="240" height="140"/>
+    <rect x="140" y="240" width="920" height="140"/>
+  </g>
+  <!-- skylight -->
+  <polygon points="560,240 640,240 600,200" fill="#F3F1EC" stroke="#1f1d18" stroke-width="1.5"/>
+  <line x1="600" y1="180" x2="600" y2="200" stroke="#9c4a2e" stroke-width="1"/>
+  <polygon points="595,194 605,194 600,204" fill="#9c4a2e"/>
+  <text x="612" y="190" font-size="10" fill="#9c4a2e">نورگیر</text>
+  
+  <g stroke="#7a7468" stroke-width="0.75" fill="none">
+    <line x1="140" y1="560" x2="1060" y2="560"/>
+    <line x1="140" y1="556" x2="140" y2="564"/>
+    <line x1="1060" y1="556" x2="1060" y2="564"/>
+  </g>
+  <text x="600" y="554" font-size="10" fill="#7a7468" text-anchor="middle" letter-spacing="1">برش طولی</text>
+  </svg>

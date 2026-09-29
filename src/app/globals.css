@@ -1,0 +1,742 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Estedad — local Persian typeface
+   Files placed in /public/fonts. Loaded via @font-face so the
+   site never depends on an external font CDN.
+   ============================================================ */
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/Estedad-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/Estedad-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/Estedad-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Estedad";
+  src: url("/fonts/Estedad-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-sans: "Estedad", ui-sans-serif, system-ui, "Tahoma", "Segoe UI",
+    sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", "Menlo", monospace;
+
+  /* Color tokens — wrapped in hsl() because the :root/.dark values
+     are raw HSL triples (e.g. "40 14% 95%"), not full hsl() strings. */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Architectural tokens (paper / ink / line / brick) */
+  --color-paper: hsl(var(--paper));
+  --color-ink: hsl(var(--ink));
+  --color-ink-soft: hsl(var(--ink-soft));
+  --color-line: hsl(var(--line));
+  --color-line-strong: hsl(var(--line-strong));
+  --color-brick: hsl(var(--brick));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================================
+   LIGHT MODE — "architectural paper"
+   Warm off-white base (#F3F1EC). Predominantly monochromatic.
+   A muted architectural brick accent — visibly present but controlled.
+   ============================================================ */
+:root {
+  --radius: 2px; /* architectural — sharp, precise corners */
+
+  --background: 40 14% 95%;   /* #F3F1EC warm paper */
+  --foreground: 30 6% 12%;    /* near-black ink */
+  --card: 40 14% 96%;
+  --card-foreground: 30 6% 12%;
+  --popover: 40 16% 97%;
+  --popover-foreground: 30 6% 12%;
+  --primary: 30 6% 12%;
+  --primary-foreground: 40 14% 96%;
+  --secondary: 38 10% 90%;
+  --secondary-foreground: 30 6% 14%;
+  --muted: 38 8% 88%;
+  --muted-foreground: 32 4% 40%;
+  --accent: 16 72% 42%;        /* stronger brick/terracotta — visible */
+  --accent-foreground: 40 14% 96%;
+  --destructive: 0 70% 45%;
+  --border: 36 8% 80%;
+  --input: 36 8% 82%;
+  --ring: 16 72% 42%;          /* ring uses accent for focus */
+  --chart-1: 16 72% 42%;
+  --chart-2: 32 6% 40%;
+  --chart-3: 200 8% 45%;
+  --chart-4: 30 6% 20%;
+  --chart-5: 16 50% 58%;
+  --sidebar: 40 14% 96%;
+  --sidebar-foreground: 30 6% 12%;
+  --sidebar-primary: 30 6% 12%;
+  --sidebar-primary-foreground: 40 14% 96%;
+  --sidebar-accent: 38 10% 90%;
+  --sidebar-accent-foreground: 30 6% 14%;
+  --sidebar-border: 36 8% 80%;
+  --sidebar-ring: 16 72% 42%;
+
+  /* custom architectural tokens */
+  --paper: 40 14% 95%;
+  --ink: 30 6% 12%;
+  --ink-soft: 32 4% 40%;
+  --line: 36 8% 78%;
+  --line-strong: 32 4% 50%;
+  --brick: 16 72% 42%;         /* stronger, more visible accent */
+  --brick-soft: 16 60% 52%;    /* lighter variant for subtle uses */
+}
+
+/* ============================================================
+   DARK MODE — "dark architectural presentation board"
+   Same visual language; feels like a night drawing board.
+   ============================================================ */
+.dark {
+  --background: 220 10% 9%;    /* deep neutral, not pure black */
+  --foreground: 40 12% 90%;
+  --card: 220 10% 11%;
+  --card-foreground: 40 12% 90%;
+  --popover: 220 10% 12%;
+  --popover-foreground: 40 12% 90%;
+  --primary: 40 12% 92%;
+  --primary-foreground: 220 10% 10%;
+  --secondary: 220 8% 16%;
+  --secondary-foreground: 40 12% 92%;
+  --muted: 220 8% 16%;
+  --muted-foreground: 40 4% 62%;
+  --accent: 18 65% 58%;        /* warmer brick in dark for visibility */
+  --accent-foreground: 220 10% 9%;
+  --destructive: 0 60% 52%;
+  --border: 220 8% 22%;
+  --input: 220 8% 22%;
+  --ring: 18 65% 58%;
+  --chart-1: 18 65% 58%;
+  --chart-2: 40 8% 70%;
+  --chart-3: 200 10% 60%;
+  --chart-4: 40 12% 85%;
+  --chart-5: 18 45% 68%;
+  --sidebar: 220 10% 11%;
+  --sidebar-foreground: 40 12% 90%;
+  --sidebar-primary: 40 12% 92%;
+  --sidebar-primary-foreground: 220 10% 10%;
+  --sidebar-accent: 220 8% 16%;
+  --sidebar-accent-foreground: 40 12% 92%;
+  --sidebar-border: 220 8% 22%;
+  --sidebar-ring: 18 65% 58%;
+
+  --paper: 220 10% 9%;
+  --ink: 40 12% 90%;
+  --ink-soft: 40 4% 62%;
+  --line: 220 8% 22%;
+  --line-strong: 40 8% 55%;
+  --brick: 18 65% 58%;
+  --brick-soft: 18 50% 66%;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Persian numerals + better Persian rendering */
+  body {
+    font-variant-numeric: proportional-nums;
+  }
+
+  /* headings use tighter tracking for editorial feel */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.01em;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  ::selection {
+    background: hsl(var(--brick) / 0.85);
+    color: hsl(var(--paper));
+  }
+}
+
+/* ============================================================
+   Architectural drawing primitives (utility classes)
+   ============================================================ */
+@layer utilities {
+  /* Technical thin grid — used on hero / sections background */
+  .arch-grid {
+    background-image:
+      linear-gradient(
+        to right,
+        hsl(var(--line) / 0.55) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(var(--line) / 0.55) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+  .arch-grid-fine {
+    background-image:
+      linear-gradient(
+        to right,
+        hsl(var(--line) / 0.35) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        hsl(var(--line) / 0.35) 1px,
+        transparent 1px
+      );
+    background-size: 24px 24px;
+  }
+
+  /* A hairline (1px) architectural line */
+  .hairline {
+    background-color: hsl(var(--line));
+  }
+
+  /* Ink-like dashed line for technical annotations */
+  .dashline {
+    background-image: repeating-linear-gradient(
+      to right,
+      hsl(var(--line-strong)) 0,
+      hsl(var(--line-strong)) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  /* Vertical dashed line */
+  .dashline-v {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      hsl(var(--line-strong)) 0,
+      hsl(var(--line-strong)) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  /* Subtle paper grain */
+  .paper-grain {
+    position: relative;
+  }
+  .paper-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(
+      hsl(var(--line) / 0.4) 0.5px,
+      transparent 0.5px
+    );
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+  .dark .paper-grain::before {
+    mix-blend-mode: screen;
+    opacity: 0.3;
+  }
+
+  /* Editorial display heading */
+  .display-1 {
+    font-size: clamp(2.75rem, 9vw, 8rem);
+    line-height: 0.92;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+  .display-2 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.02;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .display-3 {
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  /* ============================================================
+     STROKE-TO-FILL TYPOGRAPHY SYSTEM
+     ------------------------------------------------------------
+     Three real HTML text layers stacked on top of each other.
+     No SVG. The text remains selectable, accessible, responsive.
+
+     Layer 1 — .ts-stroke (top): the outlined letterforms.
+       Uses -webkit-text-stroke for a thin architectural outline.
+       color: transparent so only the stroke shows.
+
+     Layer 2 — .ts-fill (bottom): the solid fill, revealed through
+       the outline via background-clip: text + an animated linear
+       gradient. The gradient position travels (background-position)
+       so the fill visibly progresses THROUGH the letters, not a fade.
+
+     Layer 3 — .ts-detail (mid, optional): a thin construction line
+       that traces the baseline / x-height — a "construction" detail.
+
+     The fill travel is driven by a CSS variable --ts-fill-pos (0→100)
+     which Motion animates. This keeps it GPU-friendly (background-position
+     is composited) and performant.
+     ============================================================ */
+
+  /* The outline layer — thin architectural stroke, transparent interior */
+  .ts-stroke {
+    -webkit-text-stroke: 1.2px hsl(var(--ink) / 0.55);
+    color: transparent;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+  }
+  .dark .ts-stroke {
+    -webkit-text-stroke-color: hsl(var(--ink) / 0.6);
+  }
+
+  /* The fill layer — solid color revealed via background-clip: text.
+     The background is a linear-gradient that is mostly transparent
+     up to --ts-fill-pos, then solid. As --ts-fill-pos goes 0→100,
+     the solid region grows through the letters. */
+  .ts-fill {
+    /* gradient: transparent → solid, split at --ts-fill-pos */
+    background-image: linear-gradient(
+      to left,
+      hsl(var(--ink)) 0%,
+      hsl(var(--ink)) calc(var(--ts-fill-pos, 0%) ),
+      transparent calc(var(--ts-fill-pos, 0%) ),
+      transparent 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* animate the position smoothly when the var changes */
+    transition: none;
+  }
+  .dark .ts-fill {
+    background-image: linear-gradient(
+      to left,
+      hsl(var(--ink)) 0%,
+      hsl(var(--ink)) calc(var(--ts-fill-pos, 0%) ),
+      transparent calc(var(--ts-fill-pos, 0%) ),
+      transparent 100%
+    );
+  }
+
+  /* A subtle persistent outline that remains AFTER the fill completes —
+     a secondary architectural detail. Lower opacity than the initial stroke. */
+  .ts-stroke-residual {
+    -webkit-text-stroke: 1px hsl(var(--ink) / 0.18);
+    color: transparent;
+  }
+  /* The strong initial stroke — shown before/during fill, then fades out
+     as the fill covers the letters. Thicker, more visible. */
+  .ts-stroke-display {
+    -webkit-text-stroke: 1.3px hsl(var(--ink) / 0.6);
+    color: transparent;
+  }
+  .dark .ts-stroke-display {
+    -webkit-text-stroke-color: hsl(var(--ink) / 0.65);
+  }
+
+  /* The residual outline used for the latin-name ghost layer —
+     very faint, permanent, an editorial detail. */
+  .text-outline-residual {
+    -webkit-text-stroke: 1px hsl(var(--ink) / 0.16);
+    color: transparent;
+  }
+
+  /* Small technical annotation label */
+  .annotation {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: hsl(var(--ink-soft));
+    font-weight: 500;
+  }
+  .annotation-mono {
+    /* font-family: var(--font-mono); */
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    color: hsl(var(--ink-soft));
+  }
+
+  /* Persian digits — convert ASCII to Persian form via OpenType */
+  .fa-num {
+    font-feature-settings: "ss01";
+  }
+
+  /* Custom scrollbar (thin, architectural) */
+  .scroll-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scroll-thin::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--line-strong));
+    border: 2px solid hsl(var(--muted));
+  }
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--ink-soft));
+  }
+
+  /* Focus ring — architectural, fits the visual language */
+  .focus-arch:focus-visible {
+    outline: 1px solid hsl(var(--ink));
+    outline-offset: 3px;
+  }
+
+  /* A more visible architectural focus that draws a corner-bracket frame
+     around the focused element — used on key interactive elements */
+  .focus-frame {
+    position: relative;
+  }
+  .focus-frame:focus-visible {
+    outline: none;
+  }
+  .focus-frame:focus-visible::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    pointer-events: none;
+    border: 1px solid hsl(var(--brick));
+  }
+  .focus-frame:focus-visible::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid hsl(var(--brick));
+    border-right: 1px solid hsl(var(--brick));
+    pointer-events: none;
+  }
+
+  /* Architectural form inputs — sharp, hairline, paper-like */
+  .arch-input {
+    width: 100%;
+    background: hsl(var(--background));
+    border: 1px solid hsl(var(--line-strong) / 0.5);
+    padding: 0.625rem 0.75rem;
+    font-size: 0.875rem;
+    color: hsl(var(--foreground));
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 0;
+  }
+  .arch-input::placeholder {
+    color: hsl(var(--ink-soft) / 0.7);
+  }
+  .arch-input:focus {
+    outline: none;
+    border-color: hsl(var(--ink));
+    box-shadow: 0 0 0 1px hsl(var(--ink));
+  }
+  .arch-input:hover:not(:focus) {
+    border-color: hsl(var(--line-strong));
+  }
+  select.arch-input {
+    appearance: none;
+    background-image: linear-gradient(
+        45deg,
+        transparent 50%,
+        hsl(var(--ink-soft)) 50%
+      ),
+      linear-gradient(135deg, hsl(var(--ink-soft)) 50%, transparent 50%);
+    background-position:
+      calc(100% - 18px) 55%,
+      calc(100% - 13px) 55%;
+    background-size:
+      5px 5px,
+      5px 5px;
+    background-repeat: no-repeat;
+    padding-left: 0.75rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ============================================================
+   Construction reveal keyframes
+   Used by CSS-driven reveal where Motion is not necessary.
+   ============================================================ */
+@keyframes arch-draw-h {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes arch-draw-v {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes arch-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes arch-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes arch-clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* ============================================================
+   Ambient motion keyframes — subtle, infinite, architectural.
+   These power the "alive" feeling without being distracting.
+   ============================================================ */
+
+/* A slow horizontal scan — a thin line that drifts across a section */
+@keyframes amb-scan-h {
+  0% { transform: translateX(0); opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+/* A slow vertical drift for guide lines */
+@keyframes amb-drift-v {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* A gentle pulse for guide points / crosshairs */
+@keyframes amb-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+/* A slow infinite line-drawing loop — for ambient technical lines */
+@keyframes amb-draw-loop {
+  0% { transform: scaleX(0); transform-origin: right; }
+  40% { transform: scaleX(1); transform-origin: right; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  90% { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* A subtle breathing scale for accent dots */
+@keyframes amb-breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Utility classes for ambient motion — long durations, infinite */
+.amb-scan {
+  animation: amb-scan-h 8s ease-in-out infinite;
+}
+.amb-drift {
+  animation: amb-drift-v 6s ease-in-out infinite;
+}
+.amb-pulse {
+  animation: amb-pulse 4s ease-in-out infinite;
+}
+.amb-breathe {
+  animation: amb-breathe 3s ease-in-out infinite;
+}
+.amb-draw {
+  animation: amb-draw-loop 12s ease-in-out infinite;
+}
+
+/* ============================================================
+   Mouse parallax utilities — read --mx / --my (0–100) set by
+   MouseTracker. All use transform (GPU-friendly) with a smooth
+   transition so the motion feels eased, not twitchy.
+   Disabled on touch / reduced-motion via the MouseTracker gate.
+   ============================================================ */
+.parallax-soft {
+  transform: translate3d(
+    calc((var(--mx, 50) - 50) * -0.08px * 2),
+    calc((var(--my, 50) - 50) * -0.08px * 2),
+    0
+  );
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.parallax-medium {
+  transform: translate3d(
+    calc((var(--mx, 50) - 50) * -0.15px * 2),
+    calc((var(--my, 50) - 50) * -0.15px * 2),
+    0
+  );
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.parallax-strong {
+  transform: translate3d(
+    calc((var(--mx, 50) - 50) * -0.25px * 2),
+    calc((var(--my, 50) - 50) * -0.25px * 2),
+    0
+  );
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* ============================================================
+   BlueprintGrid — subtle animated square grid background.
+   The grid drifts very slowly; individual cells "breathe"
+   opacity at random positions. Almost invisible until you focus.
+   ============================================================ */
+
+/* Very slow background-position drift — the whole grid inches
+   diagonally over ~90 seconds, then loops. Subliminal. */
+@keyframes bp-grid-drift {
+  0% { background-position: 0 0; }
+  50% { background-position: 24px 24px; }
+  100% { background-position: 0 0; }
+}
+.bp-grid-drift {
+  animation: bp-grid-drift 90s linear infinite;
+  will-change: background-position;
+}
+
+/* A single grid cell breathing opacity — low → high → low.
+   Used on absolutely-positioned highlight cells. */
+@keyframes bp-grid-breathe {
+  0%, 100% { opacity: 0; }
+  40%, 60% { opacity: 0.5; }
+}
+.bp-grid-breathe {
+  animation-name: bp-grid-breathe;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: opacity;
+}
+
+/* ============================================================
+   Enhanced interactive element states
+   ============================================================ */
+
+/* A reusable architectural link with a drawn underline */
+.arch-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s ease;
+}
+.arch-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background: hsl(var(--ink));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.arch-link:hover::after,
+.arch-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* A drawn corner that appears on hover for framed elements */
+.arch-hover-frame {
+  position: relative;
+}
+.arch-hover-frame::before,
+.arch-hover-frame::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.arch-hover-frame::before {
+  top: 0;
+  right: 0;
+  border-top: 1px solid hsl(var(--brick));
+  border-right: 1px solid hsl(var(--brick));
+  transform: translate(4px, -4px);
+}
+.arch-hover-frame::after {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid hsl(var(--brick));
+  border-left: 1px solid hsl(var(--brick));
+  transform: translate(-4px, 4px);
+}
+.arch-hover-frame:hover::before,
+.arch-hover-frame:hover::after {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ============================================================
+   Reduced motion — respect user preference.
+   Kill non-essential animations entirely.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
